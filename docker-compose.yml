@@ -21,7 +21,7 @@ services:
       - "2025:2000"
     depends_on:
       - postgresdb
-    restart: on-failure
+    restart: on-failure #self healing
     networks:
       - springboot-postgres-net
 
@@ -32,9 +32,10 @@ services:
       - "3000:80"
     depends_on:
       - backend
-    restart: on-failure
+    restart: on-failure #self healing
     networks:
       - springboot-postgres-net
+      #if we dont mention network nanem default network will be created with the name projectname_default
 
 volumes:
   postgres_data:
